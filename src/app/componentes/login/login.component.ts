@@ -12,7 +12,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public login !: any;
+  public cliente !: any;
   form : FormGroup;
   loading = false;
   constructor(private fb : FormBuilder, private snack : MatSnackBar, private router : Router,
@@ -38,20 +38,20 @@ export class LoginComponent implements OnInit {
     }*/
 
     const login: any = {
-      usuario: this.form.value.user,
-      contraseña: this.form.value.pass
+      correo: this.form.value.user,
+      clave: this.form.value.pass
     }
 
     this.clienteService.login(login).subscribe(data => {
-      this.login = data
-      console.log(login);
+      this.cliente = data
+      console.log(this.cliente);
     }, error => {
       this.snack.open('El cliente no existe', '', {
         duration: 2000,
         horizontalPosition: 'right',
         verticalPosition: 'top'
       })
-      this.login = null
+      this.cliente = null
     });
   }
 
