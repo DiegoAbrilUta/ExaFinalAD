@@ -37,14 +37,24 @@ export class LoginComponent implements OnInit {
       this.form.reset();
     }*/
 
-    const login: any = {
-      correo: this.form.value.user,
-      clave: this.form.value.pass
-    }
+      const correo = this.form.value.user;
+      const clave = this.form.value.pass
 
-    this.clienteService.login(login).subscribe(data => {
+
+    this.clienteService.login(correo, clave).subscribe(data => {
       this.cliente = data
-      console.log(this.cliente);
+      if(this.cliente != null){
+        localStorage.setItem('id', this.cliente.id);
+        setTimeout( () => {
+          this.router.navigate(['hub'])
+        }, 1000);
+      }else{
+        this.snack.open('El cliente no existe', '', {
+          duration: 2000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+        })
+      }
     }, error => {
       this.snack.open('El cliente no existe', '', {
         duration: 2000,

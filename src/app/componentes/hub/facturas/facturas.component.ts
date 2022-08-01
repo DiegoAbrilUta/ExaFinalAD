@@ -19,6 +19,7 @@ export class FacturasComponent implements OnInit {
     private facturaService: FacturaService,
     public facturamodal: MatDialog
   ) {
+    var idCliente = localStorage.getItem('id');
   }
 
   ngOnInit(): void {

@@ -17,7 +17,7 @@ export class ClienteService {
     return this.http.get(environment.urlGlobal+this.api)
   }
 
-  login(login : any): Observable<any>{
-    return this.http.post(environment.urlGlobal+this.api,login)
+  login(correo: string, clave: string): Observable<any>{
+    return this.http.get(environment.urlGlobal+this.api+correo+"/"+clave)
    }
 }
