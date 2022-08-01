@@ -1,0 +1,8 @@
+.alinearNumeros{
+    text-align: right;
+  }
+
+  .example-button-container {
+    justify-content: center;
+    width: 120px;
+  }

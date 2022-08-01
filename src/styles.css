@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; background-color: black; color: white;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.contenedor{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 5px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.mat-grid-tile.content-left .mat-grid-tile-content { 
+  justify-content: flex-start;
+  margin-left: 5px;
+}
+
+.mat-grid-tile.content-right .mat-grid-tile-content { 
+  justify-content: flex-end;
+  margin-right: 5px;
+}

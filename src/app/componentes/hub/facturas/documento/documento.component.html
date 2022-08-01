@@ -1,0 +1,91 @@
+<div>
+    <div class="example-button-container">
+        <button mat-dialog-close mat-fab color="warn" aria-label="Example icon button with a home icon">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    <mat-card-title style="margin-left: 70%;">
+        Factura #{{productoID}}
+    <mat-card-subtitle>{{factura.fecha | date : 'dd/MM/yyyy, h:mm a'}}</mat-card-subtitle>
+    </mat-card-title>
+    <mat-grid-list cols="2" rowHeight="25px" gutterSize="0px">
+        <mat-grid-tile class="content-left" colspan="1" rowspan="1" style="background-color: rgb(255, 1, 1);">
+            Datos del Cliente:
+        </mat-grid-tile>
+        <mat-grid-tile class="content-right" colspan="1" rowspan="1" style="background-color: rgb(255, 0, 0);">
+            ID del Cliente: {{factura.idcliente}}
+        </mat-grid-tile>
+        <mat-grid-tile class="content-left" colspan="1" rowspan="1" style="background-color: rgba(255, 1, 1, 0);">
+            Cédula: {{factura.idclienteNavigation.cedula}}
+        </mat-grid-tile>
+        <mat-grid-tile class="content-left" colspan="1" rowspan="1" style="background-color: rgba(255, 0, 0, 0);">
+            Dirección: {{factura.idclienteNavigation.direccion}}
+        </mat-grid-tile>
+        <mat-grid-tile class="content-left" colspan="1" rowspan="1" style="background-color: rgba(255, 1, 1, 0);">
+            Nombre: {{factura.idclienteNavigation.nombre}} {{factura.idclienteNavigation.apellido}}
+        </mat-grid-tile>
+        <mat-grid-tile class="content-left" colspan="1" rowspan="1" style="background-color: rgba(255, 0, 0, 0);">
+            Teléfono: {{factura.idclienteNavigation.telf}}
+        </mat-grid-tile>
+    </mat-grid-list>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-grid-list cols="5" rowHeight="20px" gutterSize="0px" style="margin-bottom: 3px;">
+
+        <mat-grid-tile colspan="1" rowspan="2" style="background-color: rgb(92, 87, 87);">
+            ID Producto
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="2" style="background-color: rgb(92, 87, 87);">
+            Producto
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="2" style="background-color: rgb(92, 87, 87);">
+            Cantidad
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="2" style="background-color: rgb(92, 87, 87);">
+            PU
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="2" style="background-color: rgb(92, 87, 87);">
+            Subtotal
+        </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list *ngFor="let detalle of factura.detalles " cols="5" rowHeight="20px" gutterSize="0px">
+        <mat-grid-tile colspan="1" rowspan="2" style="background-color: rgb(92, 87, 87);">
+            {{detalle.idproducto}}
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="2" style="background-color: rgb(92, 87, 87);">
+            <img src="https://cdn-icons-png.flaticon.com/512/85/85488.png" style="width: 25px; height: 25px; padding: 15px;">
+            {{detalle.idproductoNavigation.producto1}}
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="2" style="background-color: rgb(92, 87, 87);">
+            {{detalle.cantidad}}
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" class="content-right" rowspan="2" style="background-color: rgb(92, 87, 87);">
+           $ {{detalle.pu}}
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" class="content-right" rowspan="2" style="background-color: rgb(92, 87, 87);">
+           $ {{detalle.cantidad * detalle.pu | number: "1.2-2"}}
+        </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="5" rowHeight="20px" style="margin-top: 3px;">
+        <mat-grid-tile colspan="3" rowspan="2">
+
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="2" class="content-left" style="background-color: rgb(92, 87, 87);">
+            SUBTOTAL
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="1" class="content-right" rowspan="2" style="background-color: rgb(92, 87, 87);">
+           $ {{factura.total / 1.12 | number: "1.2-2"}}
+        </mat-grid-tile>
+        <mat-grid-tile colspan="3" rowspan="2">
+
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="2" class="content-left" style="background-color: rgb(92, 87, 87);">
+            TOTAL 
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" class="content-right" rowspan="2" style="background-color: rgb(92, 87, 87);">
+           $ {{factura.total | number: "1.2-2"}}
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
