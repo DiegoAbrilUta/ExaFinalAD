@@ -11,6 +11,7 @@ import { DocumentoComponent } from './documento/documento.component';
   styleUrls: ['./facturas.component.css']
 })
 export class FacturasComponent implements OnInit {
+  idCliente: number = 0;
   tabla: any[] = []
   dataSource = new MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -19,10 +20,10 @@ export class FacturasComponent implements OnInit {
     private facturaService: FacturaService,
     public facturamodal: MatDialog
   ) {
-    var idCliente = localStorage.getItem('id');
   }
 
   ngOnInit(): void {
+    this.idCliente = parseInt(localStorage.getItem('id')!.toString());
     this.obtenerfacturas();
   }
 

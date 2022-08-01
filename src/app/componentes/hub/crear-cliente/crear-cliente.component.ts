@@ -81,7 +81,7 @@ export class CrearClienteComponent implements OnInit {
 
       contLon = contLon + 1;
     });
-    if(contMayus >= 2 && contMinus >= 2 && contNum >= 1 && contLon >= 6 && contCar >= 1)
+    if(contMayus >= 1 && contMinus >= 1 && contNum >= 1 && contLon >= 4 && contCar >= 1)
       val = true;
     return val;
   }

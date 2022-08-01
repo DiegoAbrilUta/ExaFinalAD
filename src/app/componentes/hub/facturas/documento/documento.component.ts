@@ -14,10 +14,11 @@ export interface Tile {
   styleUrls: ['./documento.component.css']
 })
 export class DocumentoComponent implements OnInit {
+  idCliente: number  = 0;
   factura : any
   constructor(
     @Inject(MAT_DIALOG_DATA) public productoID: any,
-    private facturaService : FacturaService
+    private facturaService : FacturaService,
   ) {
     this.factura = {
       id: 0,
@@ -52,7 +53,8 @@ export class DocumentoComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  this.obtenerFacturaCompleta(this.productoID)
+    this.idCliente = parseInt(localStorage.getItem('id')!.toString());
+    this.obtenerFacturaCompleta(parseInt(this.idCliente.toString()))
   }
 
   obtenerFacturaCompleta(id : number){
